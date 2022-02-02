@@ -13,11 +13,11 @@ using namespace std;
 
 class Library {
 public:
-    Library(string file_books = "book.txt", string file_characters = "character.txt");
+    Library(string file_books = "data/book.txt", string file_characters = "data/character.txt");
     void ReadBooks(string file);
     void ReadCharacters(string file);
-    void WriteBooks(string file = "book.txt");
-    void WriteCharacters(string file = "character.txt");
+    void WriteBooks(string file = "data/book.txt");
+    void WriteCharacters(string file = "data/character.txt");
     void SetBook(Book new_book);
     void SetCharacter(string new_character);
 
