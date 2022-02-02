@@ -1,0 +1,138 @@
+5
+A short story of drinking from the Stone Age to our days
+Mark
+Forsyth
+A history of mankind in its happiest state- drunk.
+01.01.2017
+305
+Beer
+1
+Booze
+1
+Vodka
+1
+@
+4
+Tales of the dark forest
+Johnny
+Johnny
+More than half a thousand of funny and terrible, wondrous and bloody stories, that happened amidst the roleplayers of St.Petersburg in between 1991 and 2000
+01.01.2007
+1476
+Anton Lustberg
+2
+Crimson
+1
+Goblin
+1
+Johnny
+1
+Kind Olmer
+2
+Slon
+1
+Strory
+1
+The Chained Holy Father of Bulgaria
+3
+@
+3
+Liber Chaotica
+Black
+Library
+Liber Chaotica, being an account of the dark secrets and arcane lore, of the most terrible mysteies and hidden truths of the Ruinous Powers
+08.08.2005
+420
+Chaos Undivided
+1
+Khorne
+1
+Nurgle
+1
+Slaanesh
+1
+Tzeench
+1
+@
+0
+The Fellowship of the Ring
+John
+Tolkien
+The Fellowship of the Ring is the first of three volumes of the epic novel The Lord of the Rings by the English author J. R. R. Tolkien. It is followed by The Two Towers and The Return of the King. It takes place in the fictional universe of Middle-earth.
+29.07.1954
+423
+Aragorn II Elessar
+1
+Boromir
+1
+Frodo Baggins
+1
+Galadriel
+2
+Gandalf
+1
+Gimli
+1
+Legolas Greenleaf
+1
+Merry Brandybuck
+1
+Pippin Took
+1
+Sam Gamgee
+1
+@
+2
+The Return of the King
+John
+Tolkien
+The Return of the King is the third and final volume of J. R. R. Tolkien's The Lord of the Rings, following The Fellowship of the Ring and The Two Towers. It was published in 1955. The story begins in the kingdom of Gondor, which is soon to be attacked by the Dark Lord Sauron.
+20.10.1955
+416
+Aragorn II Elessar
+1
+Frodo Baggins
+1
+Gandalf
+1
+Gimli
+1
+Legolas Greenleaf
+1
+Merry Brandybuck
+2
+Pippin Took
+2
+Sam Gamgee
+1
+Theoden the King of Rohan
+2
+@
+1
+The Two Towers
+John
+Tolkien
+The Two Towers is the second volume of J. R. R. Tolkien's high fantasy novel The Lord of the Rings. It is preceded by The Fellowship of the Ring and followed by The Return of the King.
+11.11.1954
+352
+Aragorn II Elessar
+1
+Frodo Baggins
+1
+Gandalf
+1
+Gimli
+1
+Legolas Greenleaf
+1
+Merry Brandybuck
+1
+Pippin Took
+1
+Sam Gamgee
+1
+Theoden the King of Rohan
+2
+Treebeard
+2
+@
