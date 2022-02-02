@@ -12,17 +12,17 @@ using namespace std;
 
 int main() {
     Library lib;
-
     //read_all_books();
-    char input_letter;
+    string input_letter;
     cout << "Welcome to our library!" << endl;
     unsigned int id = 0;
 
     while (true) {
         cout << "Press press 'F' to find a book or press 'E' to edit library: ";
-        cin >> input_letter;
-        if (input_letter == 'F' || input_letter == 'f' || input_letter == 'E' || input_letter == 'e')
+        getline(cin, input_letter);
+        if (input_letter[0] == 'F' || input_letter[0] == 'f' || input_letter[0] == 'E' || input_letter[0] == 'e')
         {
+            lib.PrintAll();
             break;
         }
         else {
@@ -30,7 +30,8 @@ int main() {
         }
 
     }
- /*  while (input_letter == 'F' || input_letter == 'f' || input_letter == 'E' || input_letter == 'e')
+    /*
+  while (input_letter == 'F' || input_letter == 'f' || input_letter == 'E' || input_letter == 'e')
     {
 
 
@@ -171,8 +172,9 @@ int main() {
     }
     */
 
-    lib.WriteBooks();
-    lib.WriteCharacters();
+
+lib.WriteBooks();
+lib.WriteCharacters();
 
     return 0;
 

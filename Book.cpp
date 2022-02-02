@@ -2,17 +2,12 @@
 
 
 Book::Book(string new_id, string new_title, string new_description, string new_num_of_pages, string new_authors_name, string new_authors_surname, string new_date){
-    SetId(new_id);
     SetTitle(new_title);
     SetDescription(new_description);
     SetName(new_authors_name);
     SetSurname(new_authors_surname);
     SetNumOfPages(new_num_of_pages);
     SetDate(new_date);
-}
-
-unsigned int Book::GetId() {
-    return id;
 }
 
 string Book::GetTitle() {
@@ -87,6 +82,21 @@ string Book::GetCharacterLevel(string ch_id) {
     }
 }
 
+ostream& operator<< (ostream& out, const Level& date) {
+    switch (date)
+    {
+    case Level::MAIN:
+        out << "main";
+        return out;
+    case Level::SECONDARY:
+        out << "secondary";
+        return out;
+    case Level::EPISODIC:
+        out << "episodic";
+        return out;
+    }
+}
+
 int Book::GetCharacterLevelInt(string ch_id) {
     return static_cast<int>(characters.at(ch_id));
 }
@@ -97,14 +107,6 @@ int Book::GetNumOfCharacters() {
 
 map<string, Level> Book::GetAllCharacters() {
     return characters;
-}
-
-void Book::SetId(string str) {
-    id = stoi(str);
-}
-
-void Book::SetId(int str) {
-    id = str;
 }
 
 
@@ -176,3 +178,53 @@ bool operator< (const Book& b1, const Book& b2) {
         return b1.authors_surname < b2.authors_surname;
     }
 }
+
+ostream& operator<< (ostream& out, const Date& date) {
+    out << right << setfill('0') << setw(2) << date.day << "." << setfill('0') << setw(2) << date.month << "." << setfill('0') << setw(4) << date.year;
+    return out;
+}
+
+void Book::PrintBook(vector<string> to_print) {
+    cout << endl;
+    if (find(to_print.begin(), to_print.end(), "title") != to_print.end())
+    {
+        cout << title << endl << endl;
+    }
+    if (find(to_print.begin(), to_print.end(), "name") != to_print.end())
+    {
+        cout << "\t" << setfill(' ') << setw(18) << left << "Author:" << authors_name << " " << authors_surname << endl << endl;
+    }
+    if (find(to_print.begin(), to_print.end(), "pages") != to_print.end())
+    {
+        cout << "\t" << setfill(' ') << setw(18) << left << "Number of pages:" << num_of_pages << " pages" << endl << endl;
+    }
+    if (find(to_print.begin(), to_print.end(), "date") != to_print.end())
+    {
+        cout << "\t" << setfill(' ') << setw(18) << left << "First publicated:" << date << endl << endl;
+    }
+    if (find(to_print.begin(), to_print.end(), "description") != to_print.end())
+    {
+        cout << "Description:" << "\n\n" << description << endl << endl;
+    }    
+    if (find(to_print.begin(), to_print.end(), "characters") != to_print.end())
+    {
+        cout << "Characters: " << endl << endl;
+        for (auto [name, lvl] : characters) {
+            cout << "\t" << setfill('.') << setw(40) << left << name << lvl << " character" << endl;
+
+        }
+    }
+    cout << endl;
+}
+
+
+
+
+
+string title;
+string description;
+int num_of_pages;
+string authors_name;
+string authors_surname;
+Date date;
+map<string, Level> characters;
