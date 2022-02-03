@@ -21,8 +21,7 @@ int main() {
         cout << "Press press 'F' to find a book or press 'E' to edit library: ";
         getline(cin, input_letter);
         if (input_letter[0] == 'F' || input_letter[0] == 'f' || input_letter[0] == 'E' || input_letter[0] == 'e')
-        {
-            lib.PrintAll();
+        {            
             break;
         }
         else {
@@ -30,22 +29,22 @@ int main() {
         }
 
     }
-    /*
-  while (input_letter == 'F' || input_letter == 'f' || input_letter == 'E' || input_letter == 'e')
+    
+  while (input_letter[0] == 'F' || input_letter[0] == 'f' || input_letter[0] == 'E' || input_letter[0] == 'e')
     {
 
 
 
-        while (input_letter == 'E' || input_letter == 'e')
+        while (input_letter[0] == 'E' || input_letter[0] == 'e')
         {
             cout << "Press press 'A' to add a book, press 'D' to delete, press 'U' to update or press 'B' to turn back: ";
             cin >> input_letter;
-            if (input_letter == 'A' || input_letter == 'a')
+            if (input_letter[0] == 'A' || input_letter[0] == 'a')
             {
                 lib.AddBook();
                 break;
             }
-            else if (input_letter == 'D' || input_letter == 'd')
+            else if (input_letter[0] == 'D' || input_letter[0] == 'd')
             {
                 while (true)
                 {
@@ -64,7 +63,7 @@ int main() {
                     cout << "Invalid syntax. Try again" << endl;
                 }
             }
-            else if (input_letter == 'U' || input_letter == 'u')
+            else if (input_letter[0] == 'U' || input_letter[0] == 'u')
             {
                 while (true)
                 {
@@ -96,7 +95,7 @@ int main() {
                     cout << "Invalid syntax. Try again" << endl;
                 }
             }
-            else if (input_letter == 'B' || input_letter == 'b')
+            else if (input_letter[0] == 'B' || input_letter[0] == 'b')
             {
                 break;
             }
@@ -106,7 +105,7 @@ int main() {
             }
 
         }
-      if (input_letter == 'F' || input_letter == 'f')
+      if (input_letter[0] == 'F' || input_letter[0] == 'f')
         {
             char input[256];
             cout << "Enter a title of a book, an author's name or a name of a character: ";
@@ -125,9 +124,9 @@ int main() {
                 cout << "Press press 'Y' or 'N'" << endl;
                 cin >> input_letter;
 
-                if (input_letter == 'Y' || input_letter == 'n' || input_letter == 'y' || input_letter == 'N')
+                if (input_letter[0] == 'Y' || input_letter[0] == 'n' || input_letter[0] == 'y' || input_letter[] == 'N')
                 {
-                    if (input_letter == 'Y' || input_letter == 'y')
+                    if (input_letter[0] == 'Y' || input_letter[0] == 'y')
                     {
                         cout << "Enter a title of a book, an author's name or a name of a character: ";
                         gets_s(input);
@@ -155,11 +154,11 @@ int main() {
         while (true) {
             cout << "Press press 'F' to find a book, press 'E' to edit library or press 'C' to close the program: ";
             cin >> input_letter;
-            if (input_letter == 'F' || input_letter == 'f' || input_letter == 'E' || input_letter == 'e')
+            if (input_letter[0] == 'F' || input_letter[0] == 'f' || input_letter[0] == 'E' || input_letter[0] == 'e')
             {
                 break;
             }
-            else if (input_letter == 'C' || input_letter == 'c')
+            else if (input_letter[0] == 'C' || input_letter[0] == 'c')
             {
                 return 0;
             }
@@ -170,7 +169,7 @@ int main() {
         }
 
     }
-    */
+    
 
 
 lib.WriteBooks();

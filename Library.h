@@ -29,7 +29,7 @@ public:
     void AddBook();
     void Sort();
 
-    int find_by_character(string in_name) {
+    void FindByCharacter(string in_name, bool& flag) {
         for(auto character : characters)
         if (in_name.find(character) != string::npos || character.find(in_name) != string::npos)
         {     
@@ -39,7 +39,8 @@ public:
                 {
                     if (ch_name == in_name)
                     {
-
+                        book.PrintBook({ "title", "name", "date" });
+                        flag = true;
                     }
                 }
             }
@@ -47,75 +48,25 @@ public:
     }
 
 
-/*
-    int find(char input[256])
+    bool Find(string find_text)
     {
-
-        ifstream in;
-        in.open("../book.txt");
-        char chars[50];
-        in.getline(chars, 50);
-        while (!in.eof())
-        {
-            book_info elem;
-
-
-            elem.id = atoi(chars);
-            in.getline(elem.title, 256);
-            in.getline(elem.authors_name, 50);
-            in.getline(elem.authors_surname, 50);
-            in.getline(elem.description, 1024);
-            in.getline(elem.date, 11);
-            in.getline(chars, 50);
-            elem.pages = atoi(chars);
-            char check[50];
-            level_of_character temp;
-            in.getline(chars, 50);
-            temp.character_id = atoi(chars);
-            in.getline(chars, 50);
-            temp.level = atoi(chars);
-            elem.characters.push_back(temp);
-            in.getline(chars, 50);
-
-            while (chars[0] != '@')
-            {
-
-
-                temp.character_id = atoi(chars);
-
-                in.getline(chars, 50);
-                temp.level = atoi(chars);
-                elem.characters.push_back(temp);
-                in.getline(chars, 50);
-            }
-
-
-            if (string(input).find(string(elem.authors_name)) != string::npos || string(input).find(string(elem.authors_surname)) != string::npos || string(input).find(string(elem.title)) != string::npos ||
-                string(elem.authors_name).find(string(input)) != string::npos || string(elem.authors_surname).find(string(input)) != string::npos || string(elem.title).find(string(input)) != string::npos)
-            {
-
-                cout << endl;
-                cout << elem.title << "    " << elem.authors_name << " " << elem.authors_surname << "    " << elem.date << "    " << elem.pages << " pages" << endl;
-                cout << endl;
-                cout << elem.description << endl;
-                cout << endl;
-
-
-                //  in.close();
-                  //return 0;
-
-            }
-            in.getline(chars, 50);
-            if (chars[0] == NULL)
-            {
-                break;
-            }
+        bool flag = false;
+        for (Book book : books)
+        {        
+            if (find_text.find(book.GetName()) != string::npos || find_text.find(book.GetSurname()) != string::npos || find_text.find(book.GetTitle()) != string::npos ||
+                book.GetName().find(find_text) != string::npos || book.GetSurname().find(find_text) != string::npos || book.GetTitle().find(find_text) != string::npos)
+            {                
+                book.PrintBook({ "title", "name", "date" });
+                flag = true;
+            }            
         }
-        in.close();
-        return 1;
+        if (!flag)
+        {
+            FindByCharacter(find_text, flag);
+        }
+        return flag;
     }
 
-    */
 
 private:
     vector<Book> books;
