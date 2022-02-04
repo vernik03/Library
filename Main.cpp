@@ -38,7 +38,7 @@ int main() {
         while (input_letter[0] == 'E' || input_letter[0] == 'e')
         {
             cout << "Press press 'A' to add a book, press 'D' to delete, press 'U' to update or press 'B' to turn back: ";
-            cin >> input_letter;
+            getline(cin, input_letter);
             if (input_letter[0] == 'A' || input_letter[0] == 'a')
             {
                 lib.AddBook();
@@ -46,18 +46,13 @@ int main() {
             }
             else if (input_letter[0] == 'D' || input_letter[0] == 'd')
             {
-                while (true)
                 {
-
-
-                    char input[256];
+                    string input;
                     cout << "Enter a title of a book: ";
-                    gets_s(input);
-                    gets_s(input);
-                    bool success = delete_book(input);
+                    getline(cin, input);
+                    bool success = lib.Find(input);
                     if (!success)
                     {
-
                         break;
                     }
                     cout << "Invalid syntax. Try again" << endl;
@@ -65,7 +60,7 @@ int main() {
             }
             else if (input_letter[0] == 'U' || input_letter[0] == 'u')
             {
-                while (true)
+              /*  while (true)
                 {
 
 
@@ -93,7 +88,7 @@ int main() {
                         break;
                     }
                     cout << "Invalid syntax. Try again" << endl;
-                }
+                }*/
             }
             else if (input_letter[0] == 'B' || input_letter[0] == 'b')
             {
@@ -107,37 +102,24 @@ int main() {
         }
       if (input_letter[0] == 'F' || input_letter[0] == 'f')
         {
-            char input[256];
+            string input;
             cout << "Enter a title of a book, an author's name or a name of a character: ";
-            gets_s(input);
-            gets_s(input);
-            bool finder;
-            finder = find(input);
-            if (finder)
-            {
-                finder = find_by_character(input);
-
-            }
-            while (finder)
+            getline(cin, input);
+            bool finder = false;
+            finder = lib.Find(input);
+            while (!finder)
             {
                 cout << "Search error. Try again?" << endl;
                 cout << "Press press 'Y' or 'N'" << endl;
-                cin >> input_letter;
+                getline(cin, input_letter);
 
-                if (input_letter[0] == 'Y' || input_letter[0] == 'n' || input_letter[0] == 'y' || input_letter[] == 'N')
+                if (input_letter[0] == 'Y' || input_letter[0] == 'n' || input_letter[0] == 'y' || input_letter[0] == 'N')
                 {
                     if (input_letter[0] == 'Y' || input_letter[0] == 'y')
                     {
                         cout << "Enter a title of a book, an author's name or a name of a character: ";
-                        gets_s(input);
-                        gets_s(input);
-                        finder = find(input);
-                        if (finder)
-                        {
-                            finder = find_by_character(input);
-
-                        }
-
+                        getline(cin, input);
+                        finder = lib.Find(input);
                     }
                     else
                     {
@@ -153,7 +135,7 @@ int main() {
 
         while (true) {
             cout << "Press press 'F' to find a book, press 'E' to edit library or press 'C' to close the program: ";
-            cin >> input_letter;
+            getline(cin, input_letter);
             if (input_letter[0] == 'F' || input_letter[0] == 'f' || input_letter[0] == 'E' || input_letter[0] == 'e')
             {
                 break;

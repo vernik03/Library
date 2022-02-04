@@ -37,7 +37,7 @@ public:
             {
                 for (auto [ch_name, ch_lvl] : book.GetAllCharacters())
                 {
-                    if (ch_name == in_name)
+                    if (in_name.find(ch_name) != string::npos || ch_name.find(in_name) != string::npos)
                     {
                         book.PrintBook({ "title", "name", "date" });
                         flag = true;
@@ -48,22 +48,37 @@ public:
     }
 
 
-    bool Find(string find_text)
+    bool Find(string find_text, char to_do = 'f')
     {
         bool flag = false;
         for (Book book : books)
         {        
             if (find_text.find(book.GetName()) != string::npos || find_text.find(book.GetSurname()) != string::npos || find_text.find(book.GetTitle()) != string::npos ||
                 book.GetName().find(find_text) != string::npos || book.GetSurname().find(find_text) != string::npos || book.GetTitle().find(find_text) != string::npos)
-            {                
-                book.PrintBook({ "title", "name", "date" });
-                flag = true;
+            {    
+                switch (to_do)
+                {
+                case 'f':
+                    book.PrintBook({ "title", "name", "date" });
+                    flag = true;
+                    break;
+                case 'd':
+                    book.DeleteBook();
+                    book.DeleteCharacter();
+                    flag = true;
+                    break;
+                default:
+                    break;
+                }
             }            
         }
-        if (!flag)
+        if (to_do == 'f')
         {
-            FindByCharacter(find_text, flag);
-        }
+            if (!flag)
+            {
+                FindByCharacter(find_text, flag);
+            }
+        }        
         return flag;
     }
 
