@@ -1,6 +1,5 @@
 #include "Book.h"
 
-
 Book::Book(string new_id, string new_title, string new_description, string new_num_of_pages, string new_authors_name, string new_authors_surname, string new_date){
     SetTitle(new_title);
     SetDescription(new_description);
@@ -44,30 +43,6 @@ Date Book::GetDateStruct() {
     return date;
 }
 
-/*template <typename ch_id>
-string Book::GetCharacterLevel(typename ch_id) {
-    int int_id;
-    if (!is_arithmetic_v<ch_id>)
-    {
-        int_id = stoi(ch_id);
-    }
-    else
-    {
-        int_id = ch_id;
-    }
-    switch (characters.at(int_id))
-    {
-    case Level::MAIN:
-        return "Main";
-    case Level::SECONDARY:
-        return "Secondary";
-    case Level::EPISODIC:
-        return "Episodic";
-    default:
-        break;
-    }
-}*/
-
 string Book::GetCharacterLevel(string ch_id) {
     switch (characters.at(ch_id))
     {
@@ -108,7 +83,6 @@ int Book::GetNumOfCharacters() {
 map<string, Level> Book::GetAllCharacters() {
     return characters;
 }
-
 
 void Book::SetTitle(string str) {
     title = str;
@@ -159,7 +133,6 @@ void Book::SetCharacter(string name_str, int lvl_str) {
 
     characters[name_str] = Level(lvl_str);
 }
-
 
 bool operator< (const Book& b1, const Book& b2) {
     if (b1.authors_surname == b2.authors_surname)
@@ -217,14 +190,34 @@ void Book::PrintBook(vector<string> to_print) {
     cout << endl;
 }
 
-
-
-
-
-string title;
-string description;
-int num_of_pages;
-string authors_name;
-string authors_surname;
-Date date;
-map<string, Level> characters;
+void Book::Update(char to_update, string value) {
+    string lvl;
+    switch (to_update)
+    {
+    case '0':
+        SetName(value);
+        break;
+    case '1':
+        SetSurname(value);
+        break;
+    case '2':
+        SetDescription(value);
+        break;
+    case '3':
+        SetNumOfPages(value);
+        break;
+    case '4':
+        SetDate(value);
+        break;
+    case '5':
+        cout << "Enter the level of character in this book: ";
+        getline(cin, lvl);
+        SetCharacter(value, lvl);
+        break;
+    case '6':
+        characters.erase(value);
+        break;
+    default:
+        break;
+    }
+}

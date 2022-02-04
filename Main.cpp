@@ -12,7 +12,6 @@ using namespace std;
 
 int main() {
     Library lib;
-    //read_all_books();
     string input_letter;
     cout << "Welcome to our library!" << endl;
     unsigned int id = 0;
@@ -46,13 +45,15 @@ int main() {
             }
             else if (input_letter[0] == 'D' || input_letter[0] == 'd')
             {
+                while(true)
                 {
                     string input;
                     cout << "Enter a title of a book: ";
                     getline(cin, input);
-                    bool success = lib.Find(input);
+                    bool success = lib.Find(input, 'd');
                     if (!success)
                     {
+                        cout << "Successfully deleted book " << input << "!" << endl;
                         break;
                     }
                     cout << "Invalid syntax. Try again" << endl;
@@ -60,35 +61,31 @@ int main() {
             }
             else if (input_letter[0] == 'U' || input_letter[0] == 'u')
             {
-              /*  while (true)
+                while (true)
                 {
-
-
-                    char book_title[256];
-                    int item;
-                    char input[1024];
+                    string input;
+                    string item;
                     cout << "Enter a title of a book: ";
-                    gets_s(book_title);
-                    gets_s(book_title);
+                    getline(cin, input);
                     cout << "What item you want to update: " << endl;
                     cout << "0 - autor`s name" << endl;
                     cout << "1 - autor`s surname" << endl;
                     cout << "2 - book description" << endl;
                     cout << "3 - number of pages" << endl;
-                    cout << "4 - date of publishing" << endl;
-                    cin >> item;
-                    cout << "Enter new value: ";
-                    gets_s(input);
-                    gets_s(input);
-
-                    cout << string(book_title) << " " << item << " " << string(input) << endl;
-                    bool success = update_book(book_title, item, input);
+                    cout << "4 - date of publishing" << endl;   
+                    cout << "5 - add character" << endl;
+                    cout << "6 - remove character" << endl;
+                    getline(cin, item);
+                    cout << "Enter value: ";
+                    string value;
+                    getline(cin, value);
+                    bool success = lib.Find(input, 'u', item[0], value);
                     if (!success)
                     {
                         break;
                     }
                     cout << "Invalid syntax. Try again" << endl;
-                }*/
+                }
             }
             else if (input_letter[0] == 'B' || input_letter[0] == 'b')
             {
@@ -131,6 +128,39 @@ int main() {
                 }
 
             }
+            cout << "You can get more info! Press 'I' get more info or press 'C' to continue: ";
+            getline(cin, input_letter);
+            if (input_letter[0] == 'I' || input_letter[0] == 'i')
+            {            
+            cout << "Enter full title of the book to get more info: ";
+            getline(cin, input);
+            finder = lib.Find(input, 'i');
+            while (!finder)
+            {
+                cout << "Search error. Try again?" << endl;
+                cout << "Press press 'Y' or 'N'" << endl;
+                getline(cin, input_letter);
+
+                if (input_letter[0] == 'Y' || input_letter[0] == 'n' || input_letter[0] == 'y' || input_letter[0] == 'N')
+                {
+                    if (input_letter[0] == 'Y' || input_letter[0] == 'y')
+                    {
+                        cout << "Enter full title of the book to get more info: ";
+                        getline(cin, input);
+                        finder = lib.Find(input, 'i');
+                    }
+                    else
+                    {
+                        break;
+                    };
+                }
+                else {
+                    cout << "Invalid syntax. Try again" << endl;
+                }
+
+            }
+            }
+
         }
 
         while (true) {
@@ -152,10 +182,6 @@ int main() {
 
     }
     
-
-
-lib.WriteBooks();
-lib.WriteCharacters();
 
     return 0;
 

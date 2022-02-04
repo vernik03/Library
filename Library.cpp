@@ -5,6 +5,11 @@ Library::Library(string file_books, string file_characters) {
     ReadCharacters(file_characters);
 }
 
+Library::~Library() {
+    WriteBooks();
+    WriteCharacters();
+}
+
 void Library::ReadBooks(string file) {
     ifstream in(file);
     string temp;
@@ -109,9 +114,9 @@ void Library::WriteCharacters(string file) {
 
 void Library::SetBook(Book new_book) {
     books.push_back(new_book);
-    //sort(books.begin(), books.begin());
     Sort();
 }
+
 void Library::SetCharacter(string new_character) {
     characters.insert(new_character);
 }
@@ -119,7 +124,6 @@ void Library::SetCharacter(string new_character) {
 void Library::Sort() {
    sort(books.begin(), books.begin());
 }
-
 
 void Library::AddBook()
 {
@@ -151,12 +155,6 @@ void Library::AddBook()
     cout << "Enter number of pages: ";
     getline(cin, str_in);
     new_book.SetNumOfPages(str_in);
-    /* while (!int(elem.pages))
-    {
-        cout << "Invalod number of pages input. Try again: ";
-        cin >> elem.pages;
-
-    }*/
     cout << "Enter name of main character: ";
     getline(cin, str_in);
     characters.insert(str_in);
@@ -180,4 +178,130 @@ void Library::AddBook()
         getline(cin, str_in);
     }
     SetBook(new_book);
+}
+
+void Library::PrintAll() {
+    for (auto book : books) {
+        book.PrintBook();
+    }
+}
+
+void Library::FindByCharacter(string in_name, bool& flag) {
+    for (auto character : characters)
+        if (in_name.find(character) != string::npos || character.find(in_name) != string::npos)
+        {
+            for (Book book : books)
+            {
+                for (auto [ch_name, ch_lvl] : book.GetAllCharacters())
+                {
+                    if (in_name.find(ch_name) != string::npos || ch_name.find(in_name) != string::npos)
+                    {
+                        book.PrintBook({ "title", "name", "date" });
+                        flag = true;
+                    }
+                }
+            }
+        }
+}
+
+void Library::DeleteCharacter(int i) {
+
+    for (auto [name, lvl] : books[i].GetAllCharacters())
+    {
+        bool char_flag = false;
+        for (int j = 0; j < books.size(); j++)
+        {
+            for (auto [name_check, lvl_check] : books[j].GetAllCharacters()) {
+                if (name_check == name && i != j)
+                {
+                    char_flag = true;
+                }
+            }
+        }
+        if (!char_flag)
+        {
+            characters.erase(name);
+        }
+    }
+}
+
+void Library::DeleteBook(string in_name, bool& flag) {
+    for (int i = 0; i < books.size(); i++)
+    {
+        if (books[i].GetTitle() == in_name)
+        {
+            DeleteCharacter(i);
+            books.erase(books.begin() + i);
+        }
+    }
+}
+
+void Library::CheckCharacters() {
+    for (auto name : characters)
+    {
+        bool char_flag = false;
+        for (int j = 0; j < books.size(); j++)
+        {
+            for (auto [name_check, lvl_check] : books[j].GetAllCharacters()) {
+                if (name_check == name)
+                {
+                    char_flag = true;
+                }
+            }
+        }
+        if (!char_flag)
+        {
+            characters.erase(name);
+        }
+    }
+}
+
+void Library::UpdateBook(string in_name, bool& flag, char to_update, string value) {
+    for (int i = 0; i < books.size(); i++)
+    {
+        if (books[i].GetTitle() == in_name)
+        {
+            books[i].Update(to_update, value);
+            CheckCharacters();
+        }
+    }
+}
+
+bool Library::Find(string find_text, char to_do, char to_update, string value)
+{
+    bool flag = false;
+    for (Book book : books)
+    {
+        if (find_text.find(book.GetName()) != string::npos || find_text.find(book.GetSurname()) != string::npos || find_text.find(book.GetTitle()) != string::npos ||
+            book.GetName().find(find_text) != string::npos || book.GetSurname().find(find_text) != string::npos || book.GetTitle().find(find_text) != string::npos)
+        {
+            switch (to_do)
+            {
+            case 'f':
+                book.PrintBook({ "title", "name", "date" });
+                flag = true;
+                break;
+            case 'i':
+                book.PrintBook();
+                flag = true;
+                break;
+            case 'd':
+                DeleteBook(find_text, flag);
+                break;
+            case 'u':
+                UpdateBook(find_text, flag, to_update, value);
+                break;
+            default:
+                break;
+            }
+        }
+    }
+    if (to_do == 'f')
+    {
+        if (!flag)
+        {
+            FindByCharacter(find_text, flag);
+        }
+    }
+    return flag;
 }

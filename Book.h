@@ -36,8 +36,6 @@ public:
     string GetDate();
     Date GetDateStruct();
     void GetDateStream(std::ofstream& out);
-    //template <typename ch_id>
-    //string GetCharacterLevel(typename ch_id);
     string GetCharacterLevel(string ch_name);
     int GetCharacterLevelInt(string ch_name);
     int GetNumOfCharacters();
@@ -55,6 +53,7 @@ public:
     friend ostream& operator<< (ostream& out, const Date& date);
 
     void PrintBook(vector<string> to_print = { "title", "name", "description", "pages", "date", "characters" });
+    void Update(char to_update, string value);
 
 private:
     string title;
