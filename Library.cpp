@@ -2,12 +2,10 @@
 
 Library::Library(string file_books, string file_characters) {
     ReadBooks(file_books);
-    ReadCharacters(file_characters);
 }
 
 Library::~Library() {
     WriteBooks();
-    WriteCharacters();
 }
 
 void Library::ReadBooks(string file) {
@@ -51,27 +49,6 @@ void Library::ReadBooks(string file) {
     }
 }
 
-void Library::ReadCharacters(string file) {
-    ifstream in(file);
-    string temp;
-    if (in)
-    {
-        while (!in.eof())
-        {
-            getline(in, temp);
-            if (temp == "")
-            {
-                break;
-            }
-            characters.insert(temp);
-        }
-    }
-    else
-    {
-        throw invalid_argument("Wrong filename.");
-    }
-}
-
 void Library::WriteBooks(string file) {
     ofstream out(file);
     if (out)
@@ -97,28 +74,9 @@ void Library::WriteBooks(string file) {
     }
 }
 
-void Library::WriteCharacters(string file) {
-    ofstream out(file);
-    if (out)
-    {
-        for (auto ch : characters)
-        {
-            out << ch << endl;
-        }
-    }
-    else
-    {
-        throw invalid_argument("Wrong filename.");
-    }
-}
-
 void Library::SetBook(Book new_book) {
     books.push_back(new_book);
     Sort();
-}
-
-void Library::SetCharacter(string new_character) {
-    characters.insert(new_character);
 }
 
 void Library::Sort() {
@@ -157,7 +115,6 @@ void Library::AddBook()
     new_book.SetNumOfPages(str_in);
     cout << "Enter name of main character: ";
     getline(cin, str_in);
-    characters.insert(str_in);
     new_book.SetCharacter(str_in, 1);
 
     cout << "Add more characters?" << endl;
@@ -168,7 +125,6 @@ void Library::AddBook()
     {
         cout << "Enter name of character: ";
         getline(cin, str_in);
-        characters.insert(str_in);
         string lvl;
         cout << "Enter the level of character in this book: ";
         getline(cin, lvl);
@@ -187,40 +143,15 @@ void Library::PrintAll() {
 }
 
 void Library::FindByCharacter(string in_name, bool& flag) {
-    for (auto character : characters)
-        if (in_name.find(character) != string::npos || character.find(in_name) != string::npos)
-        {
-            for (Book book : books)
-            {
-                for (auto [ch_name, ch_lvl] : book.GetAllCharacters())
-                {
-                    if (in_name.find(ch_name) != string::npos || ch_name.find(in_name) != string::npos)
-                    {
-                        book.PrintBook({ "title", "name", "date" });
-                        flag = true;
-                    }
-                }
-            }
-        }
-}
-
-void Library::DeleteCharacter(int i) {
-
-    for (auto [name, lvl] : books[i].GetAllCharacters())
+    for (Book book : books)
     {
-        bool char_flag = false;
-        for (int j = 0; j < books.size(); j++)
+        for (auto [ch_name, ch_lvl] : book.GetAllCharacters())
         {
-            for (auto [name_check, lvl_check] : books[j].GetAllCharacters()) {
-                if (name_check == name && i != j)
-                {
-                    char_flag = true;
-                }
+            if (in_name.find(ch_name) != string::npos || ch_name.find(in_name) != string::npos)
+            {
+                book.PrintBook({ "title", "name", "date" });
+                flag = true;
             }
-        }
-        if (!char_flag)
-        {
-            characters.erase(name);
         }
     }
 }
@@ -230,28 +161,7 @@ void Library::DeleteBook(string in_name, bool& flag) {
     {
         if (books[i].GetTitle() == in_name)
         {
-            DeleteCharacter(i);
             books.erase(books.begin() + i);
-        }
-    }
-}
-
-void Library::CheckCharacters() {
-    for (auto name : characters)
-    {
-        bool char_flag = false;
-        for (int j = 0; j < books.size(); j++)
-        {
-            for (auto [name_check, lvl_check] : books[j].GetAllCharacters()) {
-                if (name_check == name)
-                {
-                    char_flag = true;
-                }
-            }
-        }
-        if (!char_flag)
-        {
-            characters.erase(name);
         }
     }
 }
@@ -262,7 +172,6 @@ void Library::UpdateBook(string in_name, bool& flag, char to_update, string valu
         if (books[i].GetTitle() == in_name)
         {
             books[i].Update(to_update, value);
-            CheckCharacters();
         }
     }
 }
