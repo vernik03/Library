@@ -128,6 +128,10 @@ int main() {
                 }
 
             }
+            if (finder)
+            {
+
+            
             cout << "You can get more info! Press 'I' get more info or press 'C' to continue: ";
             getline(cin, input_letter);
             if (input_letter[0] == 'I' || input_letter[0] == 'i')
@@ -158,6 +162,7 @@ int main() {
                     cout << "Invalid syntax. Try again" << endl;
                 }
 
+            }
             }
             }
 

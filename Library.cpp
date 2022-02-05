@@ -122,7 +122,7 @@ void Library::SetCharacter(string new_character) {
 }
 
 void Library::Sort() {
-   sort(books.begin(), books.begin());
+   sort(books.begin(), books.end());
 }
 
 void Library::AddBook()

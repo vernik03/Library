@@ -139,7 +139,21 @@ bool operator< (const Book& b1, const Book& b2) {
     {
         if (b1.authors_name == b2.authors_name)
         {
-            return b1.title < b2.title;
+            if (b1.date.year == b2.date.year)
+            {
+                if (b1.date.month == b2.date.month)
+                {
+                    return b1.date.day < b2.date.day;
+                }
+                else
+                {
+                    return b1.date.month < b2.date.month;
+                }
+            }
+            else
+            {
+                return b1.date.year < b2.date.year;
+            }
         }
         else
         {

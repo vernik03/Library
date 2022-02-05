@@ -34,6 +34,17 @@ Strory
 The Chained Holy Father of Bulgaria
 3
 @
+Flowers for Algernon
+Daniel
+Keyes
+Algernon is a laboratory mouse who has undergone surgery to increase his intelligence. The story is told by a series of progress reports written by Charlie Gordon, the first human subject for the surgery, and it touches on ethical and moral themes such as the treatment of the mentally disabled.
+01.01.1966
+311
+Algernon 
+1
+Charlie 
+1
+@
 Liber Chaotica
 Black
 Library
@@ -78,31 +89,6 @@ Pippin Took
 Sam Gamgee
 1
 @
-The Return of the King
-John
-Tolkien
-The Return of the King is the third and final volume of J. R. R. Tolkien's The Lord of the Rings, following The Fellowship of the Ring and The Two Towers. It was published in 1955. The story begins in the kingdom of Gondor, which is soon to be attacked by the Dark Lord Sauron.
-20.10.1955
-416
-Aragorn II Elessar
-1
-Frodo Baggins
-1
-Gandalf
-1
-Gimli
-1
-Legolas Greenleaf
-1
-Merry Brandybuck
-2
-Pippin Took
-2
-Sam Gamgee
-1
-Theoden the King of Rohan
-2
-@
 The Two Towers
 John
 Tolkien
@@ -130,14 +116,28 @@ Theoden the King of Rohan
 Treebeard
 2
 @
-Flowers for Algernon
-Daniel
-Keyes
-Algernon is a laboratory mouse who has undergone surgery to increase his intelligence. The story is told by a series of progress reports written by Charlie Gordon, the first human subject for the surgery, and it touches on ethical and moral themes such as the treatment of the mentally disabled.
-01.01.1966
-311
-Algernon 
+The Return of the King
+John
+Tolkien
+The Return of the King is the third and final volume of J. R. R. Tolkien's The Lord of the Rings, following The Fellowship of the Ring and The Two Towers. It was published in 1955. The story begins in the kingdom of Gondor, which is soon to be attacked by the Dark Lord Sauron.
+20.10.1955
+416
+Aragorn II Elessar
 1
-Charlie 
+Frodo Baggins
 1
+Gandalf
+1
+Gimli
+1
+Legolas Greenleaf
+1
+Merry Brandybuck
+2
+Pippin Took
+2
+Sam Gamgee
+1
+Theoden the King of Rohan
+2
 @
