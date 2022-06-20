@@ -24,7 +24,7 @@ The Two Towers
 
 Description:
 
-The Two Towers is the second volume of J. R. R. Tolkien's high fantasy novel The Lord of the Rings.<br/>
+The Two Towers is the second volume of J. R. R. Tolkien's high fantasy novel The Lord of the Rings.  
 It is preceded by The Fellowship of the Ring and followed by The Return of the King.
 
 Characters:
