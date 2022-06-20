@@ -1,7 +1,8 @@
 # Library
 This is a new OOP version of library database on txt-files.
 
-```Enter a title of a book, an author's name or a name of a character: Towers
+```
+Enter a title of a book, an author's name or a name of a character: Towers
 
 The Two Towers
 
@@ -36,4 +37,5 @@ Characters:
         Pippin Took.............................main character
         Sam Gamgee..............................main character
         Theoden the King of Rohan...............secondary character
-        Treebeard...............................secondary character```
+        Treebeard...............................secondary character
+        ```
