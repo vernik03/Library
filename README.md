@@ -38,4 +38,3 @@ Characters:
         Sam Gamgee..............................main character
         Theoden the King of Rohan...............secondary character
         Treebeard...............................secondary character
-        ```
